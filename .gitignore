@@ -21,6 +21,3 @@ __pycache__/
 # Arquivos de sistema
 .DS_Store
 Thumbs.db
-
-# Remove environment from git
-myenv/
