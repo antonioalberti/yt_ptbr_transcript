@@ -1,0 +1,4 @@
+pytube
+moviepy
+python-dotenv
+google-cloud-speech
