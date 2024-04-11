@@ -20,8 +20,4 @@ __pycache__/
 
 # Arquivos de sistema
 .DS_Store
-<<<<<<< HEAD
 Thumbs.db
-=======
-Thumbs.db
->>>>>>> origin/main
