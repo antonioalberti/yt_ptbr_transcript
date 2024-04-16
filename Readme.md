@@ -1,4 +1,54 @@
 
+# YouTube Video Transcription
+
+This Python script allows you to download a YouTube video, extract the audio, and generate a transcript using the Whisper API.
+
+## Prerequisites
+
+Before running the script, make sure you have the following dependencies installed:
+
+- Python 3.x
+- `pytube` library: Install using `pip install pytube`
+- `moviepy` library: Install using `pip install moviepy`
+- `whisper` library: Install using `pip install git+https://github.com/openai/whisper.git`
+
+## Installation
+
+### Windows
+
+1. Clone the repository or download the `main.py` and `install.bat` files.
+
+2. Open a command prompt and navigate to the directory where the files are located.
+
+3. Run the `install.bat` file by double-clicking on it or executing the following command in the command prompt:
+
+install.bat
+
+
+This will automatically install the required dependencies (`pytube`, `moviepy`, and `whisper`) using `pip`.
+
+### Other Operating Systems
+
+1. Clone the repository or download the `main.py` file.
+
+2. Open a terminal and navigate to the directory where the `main.py` file is located.
+
+3. Install the required dependencies manually by running the following commands:
+
+pip install pytube
+pip install moviepy
+pip install git+https://github.com/openai/whisper.git
+
+
+## Usage
+
+1. Open a terminal or command prompt and navigate to the directory where the `main.py` file is located.
+
+2. Run the script using the following command:
+
+python main.py
+
+
 3. When prompted, enter the URL of the YouTube video you want to transcribe.
 
 4. The script will download the video, extract the audio, and generate a transcript using the Whisper API.
