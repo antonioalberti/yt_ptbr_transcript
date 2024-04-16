@@ -12,11 +12,8 @@ call %VENV_NAME%\Scripts\activate.bat
 REM Instalar os pacotes a partir do arquivo requirements.txt
 pip install -r requirements.txt
 
-REM Fazer o upgrade da biblioteca google-cloud-speech
-pip install --upgrade google-cloud-speech
+pip install --upgrade git+https://github.com/openai/whisper.git
 
 REM Mensagem de conclusão
 echo Ambiente virtual criado e pacotes instalados com sucesso!
 echo O ambiente virtual permanece ativado.
-
-REM Manter o ambiente virtual ativado para uso posterior

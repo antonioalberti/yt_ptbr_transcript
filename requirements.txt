@@ -1,4 +1,7 @@
 pytube
 moviepy
 python-dotenv
-google-cloud-speech
+git+https://github.com/openai/whisper.git
+
+
+
