@@ -18,7 +18,7 @@ __pycache__/
 .vscode/
 .idea/
 
-# Arquivos de sistema
+# Ignorar Arquivos de sistema
 .DS_Store
 Thumbs.db
 myenv/
