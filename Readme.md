@@ -1,80 +1,76 @@
 
 # YouTube Video Transcription
 
-This Python script allows you to download a YouTube video, extract the audio, and generate a transcript using the Whisper API.
+This project allows you to download a YouTube video, extract its audio, and transcribe the audio using the OpenAI Whisper API.
 
 ## Prerequisites
 
-Before running the script, make sure you have the following dependencies installed:
-
 - Python 3.x
-- `pytube` library: Install using `pip install pytube`
-- `moviepy` library: Install using `pip install moviepy`
-- `whisper` library: Install using `pip install git+https://github.com/openai/whisper.git`
+- OpenAI API key
 
 ## Installation
 
-### Windows
+1. Clone the repository:
 
-1. Clone the repository or download the `main.py` and `install.bat` files.
+git clone https://github.com/your-username/your-repository.git
 
-2. Open a command prompt and navigate to the directory where the files are located.
+2. Navigate to the project directory:
 
-3. Run the `install.bat` file by double-clicking on it or executing the following command in the command prompt:
+cd your-repository
+
+3. Run the `install.bat` script to create a virtual environment and install the required packages:
 
 install.bat
 
+This script will create a virtual environment named `myenv`, activate it, and install the packages listed in the `requirements.txt` file.
 
-This will automatically install the required dependencies (`pytube`, `moviepy`, and `whisper`) using `pip`.
+4. Create a `.env` file in the project directory and add your OpenAI API key:
 
-### Other Operating Systems
+OPENAI_API_KEY=your-api-key
 
-1. Clone the repository or download the `main.py` file.
 
-2. Open a terminal and navigate to the directory where the `main.py` file is located.
-
-3. Install the required dependencies manually by running the following commands:
-
-pip install pytube
-pip install moviepy
-pip install git+https://github.com/openai/whisper.git
-
+Replace `your-api-key` with your actual OpenAI API key.
 
 ## Usage
 
-1. Open a terminal or command prompt and navigate to the directory where the `main.py` file is located.
+5. Make sure the virtual environment is activated. If not, activate it by running:
 
-2. Run the script using the following command:
+ myenv\Scripts\activate
+
+ 
+6. Run the `main.py` script:
 
 python main.py
 
 
-3. When prompted, enter the URL of the YouTube video you want to transcribe.
+3. Enter the YouTube video URL when prompted.
 
-4. The script will download the video, extract the audio, and generate a transcript using the Whisper API.
+4. The script will download the video, extract its audio, and save it as an MP3 file in the project directory.
 
-5. The transcript will be saved as a text file with the same name as the video title (with spaces replaced by underscores) in the same directory as the script.
+5. The audio will be transcribed using the OpenAI Whisper API, and the transcription will be saved as a text file in the project directory.
 
-## Customization
+## Dependencies
 
-- You can change the model used for transcription by modifying the line `model = whisper.load_model("large")` in the `transcribe_audio()` function. Replace `"large"` with the desired model name. Available models include:
-  - `"tiny"`: A tiny model with approximately 39 million parameters.
-  - `"base"`: The base model with approximately 74 million parameters.
-  - `"small"`: A small model with approximately 244 million parameters.
-  - `"medium"`: A medium-sized model with approximately 769 million parameters.
-  - `"large"`: A large model with approximately 1.55 billion parameters.
+The project relies on the following Python packages:
 
-  Note: Larger models provide higher accuracy but require more computational resources and may take longer to transcribe the audio.
+- `pytube`: For downloading YouTube videos
+- `moviepy`: For extracting audio from the downloaded video
+- `python-dotenv`: For loading the OpenAI API key from the `.env` file
+- `openai`: For transcribing the audio using the OpenAI Whisper API
 
-- If you encounter any issues or errors during the transcription process, additional error handling and logging statements are included in the code to help identify the problem.
+These dependencies are listed in the `requirements.txt` file and will be automatically installed during the installation process.
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
 
-## Acknowledgements
 
-- The Whisper API is developed by OpenAI. For more information, visit [https://github.com/openai/whisper](https://github.com/openai/whisper).
-- The `pytube` library is used for downloading YouTube videos. For more information, visit [https://github.com/pytube/pytube](https://github.com/pytube/pytube).
-- The `moviepy` library is used for extracting audio from the downloaded video. For more information, visit [https://github.com/Zulko/moviepy](https://github.com/Zulko/moviepy).
+
+
+
+
+
+
+
+
 

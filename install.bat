@@ -1,19 +1,17 @@
 @echo off
 
-REM Definir o nome do ambiente virtual
+REM Set the name of the virtual environment
 set VENV_NAME=myenv
 
-REM Criar o ambiente virtual
+REM Create the virtual environment
 python -m venv %VENV_NAME%
 
-REM Ativar o ambiente virtual
+REM Activate the virtual environment
 call %VENV_NAME%\Scripts\activate.bat
 
-REM Instalar os pacotes a partir do arquivo requirements.txt
+REM Install packages from the requirements.txt file
 pip install -r requirements.txt
 
-pip install --upgrade git+https://github.com/openai/whisper.git
-
-REM Mensagem de conclusão
-echo Ambiente virtual criado e pacotes instalados com sucesso!
-echo O ambiente virtual permanece ativado.
+REM Completion message
+echo Virtual environment created and packages installed successfully!
+echo The virtual environment remains activated.
