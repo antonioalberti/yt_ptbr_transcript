@@ -41,11 +41,11 @@ def split_video_into_parts(video_path, output_dir, duration):
         part_filename = f"video_part_{part_num}.mp4"
         part_path = os.path.join(output_dir, part_filename)
         
-        # Create a black screen clip with the same duration as the video part
-        black_screen = ColorClip(video_clip.size, color=(0, 0, 0), duration=min(duration, total_duration - start_time))
+        # Extract the video part
+        video_part = video_clip.subclip(start_time, min(end_time, total_duration))
         
-        # Write the black screen clip to a file
-        black_screen.write_videofile(part_path, fps=video_clip.fps)
+        # Write the video part to a file
+        video_part.write_videofile(part_path, fps=video_clip.fps)
         video_parts.append(part_path)
         
         start_time = end_time
@@ -63,18 +63,22 @@ def extract_audio_from_parts(video_parts, output_dir):
         video_clip = VideoFileClip(video_part)
         audio_clip = video_clip.audio
         
-        audio_filename = os.path.splitext(os.path.basename(video_part))[0] + ".mp3"
-        audio_path = os.path.join(output_dir, audio_filename)
-        
-        audio_clip.write_audiofile(audio_path)
-        audio_parts.append(audio_path)
+        if audio_clip is not None:
+            audio_filename = os.path.splitext(os.path.basename(video_part))[0] + ".mp3"
+            audio_path = os.path.join(output_dir, audio_filename)
+            
+            audio_clip.write_audiofile(audio_path)
+            audio_parts.append(audio_path)
+            
+            audio_clip.close()
         
         video_clip.close()
-        audio_clip.close()
     
     return audio_parts
 
 def transcribe_audio_parts(audio_parts, output_file):
+    print("Transcription iniatiated...")
+    # Open the output file for writing
     with open(output_file, "w") as file:
         for audio_part in audio_parts:
             with open(audio_part, "rb") as audio_file:
@@ -92,25 +96,15 @@ if __name__ == "__main__":
     # Download the video
     video_path, video_title = download_video(video_url, downloads_folder)
     
-    # Create a folder for the video using the video title
-    video_folder = re.sub(r'[\\/*?:"<>|\s]', "_", video_title)
-    video_output_dir = os.path.join(downloads_folder, video_folder)
-    os.makedirs(video_output_dir, exist_ok=True)
-    
-    # Move the downloaded video to the video folder
-    video_filename = os.path.basename(video_path)
-    new_video_path = os.path.join(video_output_dir, video_filename)
-    os.rename(video_path, new_video_path)
-    
-    # Split the video into parts with black screens
+    # Split the video into parts
     part_duration = 10 * 60  # 10 minutes per part
-    video_parts = split_video_into_parts(new_video_path, video_output_dir, part_duration)
+    video_parts = split_video_into_parts(video_path, downloads_folder, part_duration)
     
     # Extract audio from each video part
-    audio_parts = extract_audio_from_parts(video_parts, video_output_dir)
+    audio_parts = extract_audio_from_parts(video_parts, downloads_folder)
     
     # Transcribe each audio part separately
-    output_file = os.path.join(video_output_dir, f"{video_folder}_transcription.txt")
+    output_file = os.path.join(downloads_folder, "transcription.txt")
     transcribe_audio_parts(audio_parts, output_file)
     
     print("Transcription completed. Output file:", output_file)
