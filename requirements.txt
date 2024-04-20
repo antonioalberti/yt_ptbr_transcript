@@ -2,6 +2,5 @@ pytube
 moviepy
 python-dotenv
 openai==0.28
-
-
-
+pydub
+tqdm
