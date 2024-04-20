@@ -11,11 +11,11 @@ This project allows you to download a YouTube video, split it into parts, extrac
 
 1. Clone the repository:
 
-git clone https://github.com/your-username/your-repository.git
+git clone https://github.com/your-username/yt_transcriptor.git
 
 2. Navigate to the project directory:
 
-cd your-repository
+cd yt_transcriptor
 
 3. Run the `install.bat` script to create a virtual environment and install the required packages:
 
