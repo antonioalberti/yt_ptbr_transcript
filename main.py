@@ -77,7 +77,7 @@ def extract_audio_from_parts(video_parts, output_dir):
     return audio_parts
 
 def transcribe_audio_parts(audio_parts, output_file):
-    print("Transcription iniatiated...")
+    print("Transcription initiated...")
     # Open the output file for writing
     with open(output_file, "w") as file:
         for audio_part in audio_parts:
