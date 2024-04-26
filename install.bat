@@ -1,7 +1,7 @@
 @echo off
 
 REM Set the name of the virtual environment
-set VENV_NAME=myenv
+set VENV_NAME=venv
 
 REM Create the virtual environment
 python -m venv %VENV_NAME%
